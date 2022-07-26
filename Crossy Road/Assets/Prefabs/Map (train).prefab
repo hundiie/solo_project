@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1008995651801109620}
   - component: {fileID: 7403160419034135299}
   - component: {fileID: 4090682799335121029}
+  - component: {fileID: 1040643562517791475}
   m_Layer: 0
   m_Name: Map (train)
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4765427278564410311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.05, y: -0.5, z: 10.5}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,4 +111,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430452447b179cc469bc1c81bc528445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bestscore: 0
+--- !u!114 &1040643562517791475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765427278564410311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb08de3161b9f9f4188e5d2eaf2a3d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Train: {fileID: 4032986871234263372, guid: bb46660ce82f57a4290c7111e38a0a59, type: 3}

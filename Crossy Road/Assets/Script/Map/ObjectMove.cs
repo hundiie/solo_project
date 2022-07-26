@@ -23,7 +23,7 @@ public class ObjectMove : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.transform.Translate(speed, 0, 0);
+            other.transform.Translate(speed*Time.deltaTime, 0, 0);
         }
     }
 }

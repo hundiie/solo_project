@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4356198911359992533}
   - component: {fileID: 4356198911359992534}
   - component: {fileID: 7088495828207916658}
+  - component: {fileID: 1253748188362778540}
   m_Layer: 0
   m_Name: Map (land)
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4356198911359992535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.05, y: -0.5, z: 8.5}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,4 +111,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430452447b179cc469bc1c81bc528445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bestscore: 0
+--- !u!114 &1253748188362778540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4356198911359992535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a2713c43387ef438eabd47c664e093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Object:
+  - {fileID: 8374782159316758317, guid: b4c39d73bd4f9d34c8dc6c07d0cd9008, type: 3}
+  - {fileID: 3345879830006040969, guid: 89be85c25290c0743b843dbd1edc4905, type: 3}

@@ -18,7 +18,7 @@ public class Mapcreate : MonoBehaviour
         flag = false;
         for (int i = 0; i < 6; i++)
         {
-            random = Random.Range(0, 4);
+            random = Random.Range(0, 5);
             Vector3 startmap = new Vector3(0, -0.5f, startmapdata);
             if (Map[random].tag == "water")
             {

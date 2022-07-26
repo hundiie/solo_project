@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
     public float moveCount = 1.0f;
     public float movementSpeed = 1.0f;
     public int jumpPower;
-
+    public float speedddd;
     private int score;
     private int bestScore;
     private Vector3 movement;
@@ -19,8 +19,7 @@ public class PlayerMove : MonoBehaviour
     private int COUNT;
 
     private Mapcreate mapc;
-    private Mapdestroy mapd;
-
+    private PlayerState playst;
     private void Start()
     {
         RB = GetComponent<Rigidbody>();
@@ -30,7 +29,7 @@ public class PlayerMove : MonoBehaviour
         score = 0;
         bestScore = 0;
         mapc = GetComponent<Mapcreate>();
-        mapd = GetComponent<Mapdestroy>();
+        playst = GetComponent<PlayerState>();
     }
     void Update()
     {
@@ -40,6 +39,7 @@ public class PlayerMove : MonoBehaviour
         {
             bestScore = score;
             mapc.bestscore = bestScore;
+            playst.bestscoree = bestScore;
             mapc.flag = true;
         }
     }
@@ -57,7 +57,7 @@ public class PlayerMove : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                 MYvector = this.transform.position;
                 MYvector.z += 1;
-                RB.AddForce(0, jumpPower, 0);
+                //RB.AddForce(0, jumpPower, 0);
                 nextmove = false;
                 score++;
             }
@@ -67,7 +67,7 @@ public class PlayerMove : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 180, 0);
                 MYvector = this.transform.position;
                 MYvector.z += -1;
-                RB.AddForce(0, jumpPower, 0);
+                //RB.AddForce(0, jumpPower, 0);
                 nextmove = false;
                 score--;
             }
@@ -77,7 +77,7 @@ public class PlayerMove : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 90, 0);
                 MYvector = this.transform.position;
                 MYvector.x += 1;
-                RB.AddForce(0, jumpPower, 0);
+                //RB.AddForce(0, jumpPower, 0);
                 nextmove = false; 
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -86,42 +86,32 @@ public class PlayerMove : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, -90, 0); 
                 MYvector = this.transform.position;
                 MYvector.x += -1;
-                RB.AddForce(0, jumpPower, 0);
+                //RB.AddForce(0, jumpPower, 0);
                 nextmove = false; 
             }
 
             movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-            COUNT = 100;
         }
         
         if (!nextmove)
         {
-            if (COUNT != 0)
-            {
-                transform.Translate(0,0,0.01f);
-                COUNT--;
-            }
-            else
-            {
-                RB.AddForce(0, -10, 0);
                 transform.position = MYvector;
                 nextmove = true;
-            }
         }
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         nextmove = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "water")
+        Debug.Log(other.tag);
+        Vector3 movelog = this.transform.position;
+        movelog.x += speedddd;
+        if (other.tag == "log")
         {
-            gameObject.SetActive(false);
+            this.transform.position = movelog;
         }
     }
-
-
 }
