@@ -5,29 +5,48 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float moveCount = 1.0f;
-    public float movementSpeed = 1.0f;
-    public int jumpPower;
     public float speedddd;
-    private int score;
-    private int bestScore;
-    private Vector3 movement;
-    private Vector3 MYvector;
-    private bool nextmove;
+
+    private float playerX = 0;
+    private float playerY = 0;
+
     private float moveHorizontal;
     private float moveVertical;
-    private Rigidbody RB;
+    
+    private int score;
+    private int bestScore;
+    
+    private Vector3 movement;
+    private Vector3 MyMovement;
+    private Vector3 MYvector;
+    
+    private float movementSpeed = 0.05f;
+    private float sumN;
+
+    private bool nextmove;
+    private bool movewall;
     private int COUNT;
 
+    private Rigidbody RB;
     private Mapcreate mapc;
     private PlayerState playst;
+    
     private void Start()
     {
-        RB = GetComponent<Rigidbody>();
-        moveHorizontal = 0;
-        moveVertical = 0;
         nextmove = true;
+        movewall = true;
         score = 0;
         bestScore = 0;
+
+        playerX = 0;
+        playerY = 0;
+        
+        moveHorizontal = 0;
+        moveVertical = 0;
+        
+        sumN = 0f;
+        
+        RB = GetComponent<Rigidbody>();
         mapc = GetComponent<Mapcreate>();
         playst = GetComponent<PlayerState>();
     }
@@ -46,7 +65,9 @@ public class PlayerMove : MonoBehaviour
 
     private void INPUT()
     {
-        if (nextmove == true)
+        Debug.Log($"my movement{ MyMovement}");
+        movement = new Vector3(playerX, 0.0f, playerY);
+        if (nextmove)
         {
             moveHorizontal = 0;
             moveVertical = 0;
@@ -54,63 +75,97 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 moveVertical = 1;
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                MYvector = this.transform.position;
-                MYvector.z += 1;
-                //RB.AddForce(0, jumpPower, 0);
-                nextmove = false;
+                playerY++;
                 score++;
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                nextmove = false;
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 moveVertical = -1;
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-                MYvector = this.transform.position;
-                MYvector.z += -1;
-                //RB.AddForce(0, jumpPower, 0);
-                nextmove = false;
+                playerY--;
                 score--;
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                nextmove = false;
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 moveHorizontal = 1;
+                playerX++;
                 transform.rotation = Quaternion.Euler(0, 90, 0);
-                MYvector = this.transform.position;
-                MYvector.x += 1;
-                //RB.AddForce(0, jumpPower, 0);
-                nextmove = false; 
+                nextmove = false;
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 moveHorizontal = -1;
-                transform.rotation = Quaternion.Euler(0, -90, 0); 
-                MYvector = this.transform.position;
-                MYvector.x += -1;
-                //RB.AddForce(0, jumpPower, 0);
-                nextmove = false; 
+                playerX--;
+                transform.rotation = Quaternion.Euler(0, 270, 0); 
+                nextmove = false;
             }
-
-            movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+            COUNT = 20;
         }
-        
+            
         if (!nextmove)
         {
+            if (COUNT != 0)
+            {
+                MYvector = this.transform.position;
+                MYvector += new Vector3(moveHorizontal * movementSpeed, Mathf.Sin(0.01f), moveVertical * movementSpeed);
                 transform.position = MYvector;
-                nextmove = true;
+                COUNT--;
+            }
+            else
+            {
+                RB.AddForce(0, -10, 0);
+                movement = new Vector3(playerX, 0.0f, playerY);
+            }
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        nextmove = true;
+        if (collision.gameObject.tag == "NOMAL" || collision.gameObject.tag == "log")
+        {
+            MyMovement = this.transform.position;
+            nextmove = true;
+            transform.position = movement;
+        }
+        if (collision.gameObject.tag == "wall")
+        {
+            COUNT = 0;
+            transform.position = MyMovement;
+            movement = MyMovement;
+
+
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.tag);
-        Vector3 movelog = this.transform.position;
-        movelog.x += speedddd;
+        //Debug.Log(other.tag);
+        
         if (other.tag == "log")
         {
+            Vector3 movelog = this.transform.position;
+            if (other.transform.rotation.y == 0)
+            {
+                movelog.x += speedddd;
+                sumN += speedddd;
+                if (sumN >= 1.0f)
+                {
+                    sumN -= 1.0f;
+                    playerX += 1.0f;
+                }
+            }
+            else
+            {
+                movelog.x -= speedddd;
+                sumN += speedddd;
+                if (sumN >= 1.0f)
+                {
+                    sumN -= 1.0f;
+                    playerX -= 1.0f;
+                }
+            }
             this.transform.position = movelog;
         }
     }

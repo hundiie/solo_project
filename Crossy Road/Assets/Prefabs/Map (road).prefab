@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5263354174708452665}
   m_Layer: 0
   m_Name: Map (road)
-  m_TagString: Untagged
+  m_TagString: NOMAL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430452447b179cc469bc1c81bc528445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameravew: 30
 --- !u!114 &5263354174708452665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,4 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd5c2c2e502ddc43a0553edbfcc897a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 2222773318648668434, guid: 44d1a45b8533ffd4fac23e9bde710595, type: 3}
+  car:
+  - {fileID: 2222773318648668434, guid: 44d1a45b8533ffd4fac23e9bde710595, type: 3}
+  - {fileID: 5419236866116923068, guid: 090211c05b30fd447b2b5a4b0106f698, type: 3}

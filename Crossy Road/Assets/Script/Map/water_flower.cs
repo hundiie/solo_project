@@ -9,21 +9,21 @@ public class water_flower : MonoBehaviour
     private int randomnum;
     private void Start()
     {
-        Vector3 logmake = this.transform.position;
-        logmake.x += -10.0f;
-        logmake.y += 0.5f;
+        Vector3 flowermake = this.transform.position;
+        flowermake.x += -10.0f;
+        flowermake.y += 0.5f;
         for (int i = 0; i < 20; i++)
         {
-            randomnum = Random.Range(1, 4);
+            randomnum = Random.Range(1, 3);
             switch (randomnum)
             {
                 case 1:
-                    Instantiate(flower, logmake, transform.rotation);
+                    Instantiate(flower, flowermake, transform.rotation);
                     break;
-                default:
+                default: 
                     break;
             }
-            logmake.x += 1.0f;
+            flowermake.x += 1.0f;
         }
     }
 }

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4843304254747521795}
   - component: {fileID: 3892295879252540646}
   - component: {fileID: 3363919252670701889}
+  - component: {fileID: 5443834432495862715}
   m_Layer: 0
   m_Name: stone
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,3 +98,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5443834432495862715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374782159316758317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430452447b179cc469bc1c81bc528445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameravew: 30

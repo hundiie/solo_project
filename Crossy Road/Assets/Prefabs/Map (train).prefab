@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1040643562517791475}
   m_Layer: 0
   m_Name: Map (train)
-  m_TagString: Untagged
+  m_TagString: NOMAL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430452447b179cc469bc1c81bc528445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameravew: 30
 --- !u!114 &1040643562517791475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,4 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb08de3161b9f9f4188e5d2eaf2a3d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Train: {fileID: 4032986871234263372, guid: bb46660ce82f57a4290c7111e38a0a59, type: 3}
+  Train: {fileID: 6773249693418656204, guid: fe79fa7c45781704b814018eda5a930f, type: 3}
+  Siren: {fileID: 7325551607742172150, guid: 4022d84acbb864a4aa2375ae6ed5af3d, type: 3}

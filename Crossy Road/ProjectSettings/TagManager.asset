@@ -8,6 +8,8 @@ TagManager:
   - dead
   - deleteZone
   - log
+  - wall
+  - NOMAL
   layers:
   - Default
   - TransparentFX

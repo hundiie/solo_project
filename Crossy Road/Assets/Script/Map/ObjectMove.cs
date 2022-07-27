@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ObjectMove : MonoBehaviour
 {
-    public float speed = 0.1f;
+    public float speed;
 
-    void Update()
+    private void Update()
     {
-        transform.Translate(speed, 0, 0);
+        transform.Translate(speed * Time.deltaTime, 0, 0);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "deleteZone")
+        if (other.tag == "deleteZone")
         {
             Destroy(gameObject);
         }
@@ -23,7 +23,7 @@ public class ObjectMove : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.transform.Translate(speed*Time.deltaTime, 0, 0);
+         // other.transform.Translate(speed, 0, 0);
         }
     }
 }

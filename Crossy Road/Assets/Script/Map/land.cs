@@ -9,29 +9,29 @@ public class land : MonoBehaviour
     private int randomnum;
     private void Start()
     {
-        Vector3 logmake = this.transform.position;
-        logmake.x += -10.0f;
-        logmake.y += 1.0f;
+        Vector3 wallmake = this.transform.position;
+        wallmake.x += -10.0f;
+        wallmake.y += 1.0f;
         for (int i = 0; i < 20; i++)
         {
             randomnum = Random.Range(1, 5);
             int rani = Random.Range(0, 2);
             if (rani == 1)
             {
-                logmake.y += 0.5f;
+                wallmake.y += 0.5f;
             }
             switch (randomnum)
             {
-                case 1:Instantiate(Object[rani], logmake, transform.rotation);
+                case 1:Instantiate(Object[rani], wallmake, transform.rotation);
                     break;
                 default:
                     break;
             }
             if (rani == 1)
             {
-                logmake.y -= 0.5f;
+                wallmake.y -= 0.5f;
             }
-            logmake.x += 1.0f;
+            wallmake.x += 1.0f;
         }
     }
 }
